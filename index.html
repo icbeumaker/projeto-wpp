@@ -10,31 +10,65 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/png" href="favicon.webp" />
   </head>
   <body class="bg-light">
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 bg-success">
-          <h1 class="text-center text-white py-4">Gerador de Links</h1>
+          <h1 class="text-center text-white py-4">
+            <i class="fa-brands fa-whatsapp fa-fw"></i>
+            Gerador de Links
+          </h1>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12">
           <form
-            class="d-flex flex-row align-items-center justify-content-center"
+            id="gerar-link"
+            class="d-flex flex-column align-items-center justify-content-center"
           >
             <div class="my-3">
               <label class="form-label" for="whatsapp">Número</label>
               <input
                 placeholder="(00) 00000-0000"
-                class="form-control"
+                class="form-control phone_with_ddd"
                 type="text"
                 id="whatsapp"
+                required
               />
               <button type="submit" class="btn btn-outline-success mt-3 w-100">
                 Gerar link
+              </button>
+            </div>
+            <div id="box-gerado" class="my-3 text-center">
+              <h2>
+                <i class="fa-solid fa-circle-check fa-fw text-success"></i>
+                Link gerado!
+              </h2>
+              <a
+                class="text-decoration-none text-success"
+                id="link-gerado"
+                href="#"
+                target="_blank"
+              >
+              </a>
+              <button
+                id="copiar"
+                data-clipboard-target="#link-gerado"
+                class="btn btn-outline-primary ms-2"
+                type="button"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-title="Copiar"
+              >
+                <i class="fa-regular fa-clipboard fa-fw"></i>
               </button>
             </div>
           </form>
@@ -46,6 +80,19 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+    <script>
+      new ClipboardJS("#copiar");
+
+      const tooltipTriggerList = document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'
+      );
+      const tooltipList = [...tooltipTriggerList].map(
+        (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+      );
+    </script>
   </body>
 </html>
